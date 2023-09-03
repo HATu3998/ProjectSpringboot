@@ -13,7 +13,7 @@ public class Controller {
 
     @RequestMapping(value="/hello", method=RequestMethod.GET)
     public ResponseEntity<?> hello() {
-        User u = new User(1, "hh");
+        User u = new User(1,"nguyễn văn a","a@gmail.com","avatar.img","012345678","abc123");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(u);
     }
 }
