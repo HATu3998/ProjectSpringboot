@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javademo.spring_boot.dto.UserDto;
@@ -29,6 +30,12 @@ public class UserController {
 	public ResponseEntity<?> getListbyId(@PathVariable int id){
 		UserDto rs=userService.getUserById(id);
 		return ResponseEntity.ok(rs);
+	}
+	@GetMapping("/user/search")
+	public ResponseEntity<?> searchList(@RequestParam(name="keyword",required = false,defaultValue = "")String name){
+		List<UserDto> u=userService.searchListUser(name);
+		return ResponseEntity.ok(u);
+		
 	}
 	@PostMapping("/user")
 	public ResponseEntity<?> createListEntity(){

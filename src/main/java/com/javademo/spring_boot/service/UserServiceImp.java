@@ -13,9 +13,9 @@ public class UserServiceImp implements UserService {
 	
 	static {
 		users.add(new User(1,"nguyễn văn a","a@gmail.com","avatar.img","012345678","abc123"));
-		users.add(new User(2,"nguyễn văn b","b@gmail.com","avatar.img","012345678","abc123"));
-		users.add(new User(3,"nguyễn văn c","c@gmail.com","avatar.img","012345678","abc123"));
-		users.add(new User(4,"nguyễn văn d","d@gmail.com","avatar.img","012345678","abc123"));
+		users.add(new User(2,"lê văn lương","b@gmail.com","avatar.img","012345678","abc123"));
+		users.add(new User(3,"đào thị hường","c@gmail.com","avatar.img","012345678","abc123"));
+		users.add(new User(4,"huỳnh quốc cường","d@gmail.com","avatar.img","012345678","abc123"));
 	}
 
 	public List<UserDto> getListUser() {
@@ -34,5 +34,15 @@ public class UserServiceImp implements UserService {
 		}
 	}
 		return null;
+	}
+
+	public List<UserDto> searchListUser(String keyword) {
+		List<UserDto> rs=new ArrayList<UserDto>();
+		for(User u:users) {
+			if(u.getName().contains(keyword)) {
+				rs.add(UserMapper.toUserDto(u));
+			}
+		}
+		return rs;
 	}
 }
