@@ -26,4 +26,13 @@ public class UserServiceImp implements UserService {
 		}
 		return rs;
 	}
+
+	public UserDto getUserById(int id) {
+	for(User u:users) {
+		if(u.getId()==id) {
+			return UserMapper.toUserDto(u);
+		}
+	}
+		return null;
+	}
 }
