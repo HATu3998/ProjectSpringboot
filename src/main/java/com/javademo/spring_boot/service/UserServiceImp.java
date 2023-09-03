@@ -2,7 +2,10 @@ package com.javademo.spring_boot.service;
 
 import org.springframework.stereotype.Component;
 import java.util.*;
+
+import com.javademo.spring_boot.dto.UserDto;
 import  com.javademo.spring_boot.entity.User;
+import com.javademo.spring_boot.mapper.UserMapper;
 @Component
 public class UserServiceImp implements UserService {
 
@@ -15,8 +18,12 @@ public class UserServiceImp implements UserService {
 		users.add(new User(4,"nguyễn văn d","d@gmail.com","avatar.img","012345678","abc123"));
 	}
 
-	public List<User> getListUser() {
+	public List<UserDto> getListUser() {
 		// TODO Auto-generated method stub
-		return users;
+		List<UserDto> rs=new ArrayList<UserDto>();
+		for(User u:users) {
+			rs.add(UserMapper.toUserDto(u));
+		}
+		return rs;
 	}
 }

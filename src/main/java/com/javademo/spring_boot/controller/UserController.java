@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.javademo.spring_boot.dto.UserDto;
 import com.javademo.spring_boot.entity.User;
 import com.javademo.spring_boot.service.UserService;
 
@@ -20,10 +21,13 @@ public class UserController {
  private UserService userService;
 	@GetMapping("/user")
 	public ResponseEntity<?> getListEntity(){
-		List<User> users=userService.getListUser();
+		List<UserDto> users=userService.getListUser();
 		return ResponseEntity.ok(users);
 	}
-	
+//	@GetMapping("/user")
+//	public ResponseEntity<?> getListbyId(){
+//		return null;
+//	}
 	@PostMapping("/user")
 	public ResponseEntity<?> createListEntity(){
 		return null;
